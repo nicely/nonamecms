@@ -1,0 +1,180 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+<!--  Last Post  -->
+<header>
+  <div style="
+  
+  background: #222; 
+
+   background-attachment:fixed; background-size:cover; padding-bottom: 100px; padding-top:60px;">
+        <div class="container">
+          <div class="row">          
+            <div class="col">
+                <h1 style="color:#fafafa;">🍓 {{posts[0].title}}</h1>
+                <p style="color:#fafafa; font-size:20px; font-weight:300;">{{posts[0].content|striptags|substring(200) }} ... </p>
+                <div class="feature_bottom">
+                    <img style="vertical-align: bottom; margin-right:5px; border: 1px solid #fbfbfb; height:30px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[0].author_slug}}.jpg" alt="Author image">
+                    <a href="#">By {{posts[0].author_name}}</a>
+                    <a class="feature_button" style="text-decoration:none;" href="/{{posts[0].slug}}"> READ MORE</a>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+  <div class="row middle-nav">
+        <div class="col col-60 v-bottom">
+                <h2 style="margin-bottom:10px;margin-top:20px;">📝 Recent Articles</h2>
+        </div>
+        <div class="col col-40" style="vertical-align: middle;">
+            <form action="/search">
+                <input class="search" name="query" type="text" placeholder="Search Blog">
+            </form>
+        </div>
+  </div>
+
+  {% if posts[1] && posts[2] %}
+  <!--  First Row  -->
+  <div style="margin-bottom:40px;" class="row">
+      <div style="vertical-align: top;" class="col">
+        <article>
+          {% if posts[1].featured_image %}
+            <p>
+              <a href="/{{posts[1].slug}}">
+                  <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[1].featured_image}}.jpg" alt="">
+              </a>
+            </p>
+            {% endif %}
+                <h2 style="margin-bottom:5px;" >
+                  <a style="text-decoration:none;" href="/{{posts[1].slug}}">{{posts[1].title}}</a>
+                </h2>
+          <p>{{posts[0].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;;text-decoration:none;" href="/{{posts[1].slug}}"> read more</a></p>
+          <p class="post_info ">
+              <img style="vertical-align: bottom; margin-right:5px; height:30px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[1].author_slug}}.jpg" alt="Author image">
+                <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[1].author_name}} on {{posts[1].readeable_date}}</span>
+          </p>
+      </article>
+      </div>
+
+      <div style="vertical-align: top;" class="col">
+          <article>
+                  {% if posts[2].featured_image %}
+                  <p>
+                    <a href="/{{posts[2].slug}}">
+                        <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[2].featured_image}}.jpg" alt="">
+                    </a>
+                  </p>
+                  {% endif %}
+                  <h2 style="margin:0;" >
+                    <a style="text-decoration:none;" href="/{{posts[2].slug}}">{{posts[2].title}}</a>
+                  </h2>
+            <p>{{posts[2].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;text-decoration:none;" href="/{{posts[2].slug}}"> read more</a></p>
+            <p class="post_info ">
+                <img style="vertical-align: bottom; margin-right:5px; height:30px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[2].author_slug}}.jpg" alt="Author image">
+                <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[2].author_name}} on {{posts[2].readeable_date}}</span>
+            </p>
+        </article>
+        </div>
+  </div>
+  {% endif %}
+
+  {% if posts[3] && posts[4] %}
+    <!--  Second Row  -->
+    <div style="margin-bottom:40px;" class="row">
+        <div style="vertical-align: top;" class="col">
+            <article>
+                    {% if posts[3].featured_image %}
+                    <p>
+                      <a href="/{{posts[3].slug}}">
+                          <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[3].featured_image}}.jpg" alt="">
+                      </a>
+                    </p>
+                    {% endif %}
+                    <h2 style="margin:0;" >
+                      <a style="text-decoration:none;" href="/{{posts[3].slug}}">{{posts[3].title}}</a>
+                    </h2>
+              <p>{{posts[3].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;text-decoration:none;" href="/{{posts[3].slug}}"> read more</a></p>
+              <p class="post_info ">
+                  <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[3].author_slug}}.jpg" alt="Author image">
+                  <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[3].author_name}} on {{posts[3].readeable_date}}</span>
+              </p>
+          </article>
+          </div>
+  
+          <div style="vertical-align: top;" class="col">
+              <article>
+                      {% if posts[4].featured_image %}
+                      <p>
+                        <a href="/{{posts[4].slug}}">
+                            <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[4].featured_image}}.jpg" alt="">
+                        </a>
+                      </p>
+                      {% endif %}
+                      <h2 style="margin:0;" >
+                        <a style="text-decoration:none;" href="/{{posts[4].slug}}">{{posts[4].title}}</a>
+                      </h2>
+                <p>{{posts[4].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;text-decoration:none;" href="/{{posts[4].slug}}"> read more</a></p>
+                <p class="post_info ">
+                    <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[4].author_slug}}.jpg" alt="Author image">
+                    <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[4].author_name}} on {{posts[4].readeable_date}}</span>
+                </p>
+            </article>
+            </div>
+    </div>
+    {% endif %}
+
+    {% if posts[5] && posts[6] %}
+      <!--  Third Row  -->
+  <div style="margin-bottom:40px;" class="row">
+      <div style="vertical-align: top;" class="col">
+          <article>
+                  {% if posts[5].featured_image %}
+                  <p>
+                    <a href="/{{posts[5].slug}}">
+                        <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[5].featured_image}}.jpg" alt="">
+                    </a>
+                  </p>
+                  {% endif %}
+                  <h2 style="margin:0;" >
+                    <a style="text-decoration:none;" href="/{{posts[5].slug}}">{{posts[5].title}}</a>
+                  </h2>
+            <p>{{posts[5].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;text-decoration:none;" href="/{{posts[5].slug}}"> read more</a></p>
+            <p class="post_info ">
+                <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[5].author_slug}}.jpg" alt="Author image">
+                <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[5].author_name}} on {{posts[5].readeable_date}}</span>
+            </p>
+        </article>
+        </div>
+
+        <div style="vertical-align: top;" class="col">
+            <article>
+                    {% if posts[6].featured_image %}
+                    <p>
+                      <a href="/{{posts[6].slug}}">
+                          <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{posts[6].featured_image}}.jpg" alt="">
+                      </a>
+                    </p>
+                    {% endif %}
+                    <h2 style="margin:0;" >
+                      <a style="text-decoration:none;" href="/{{posts[6].slug}}">{{posts[6].title}}</a>
+                    </h2>
+              <p>{{posts[6].content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;text-decoration:none;" href="/{{posts[6].slug}}"> read more</a></p>
+              <p class="post_info ">
+                  <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{posts[6].author_slug}}.jpg" alt="Author image">
+                  <span style="color:#333; font-weight: bold; font-size:14px;">By {{posts[6].author_name}} on {{posts[6].readeable_date}}</span>
+              </p>
+          </article>
+          </div>
+  </div>
+  {% endif %}
+
+  {% if posts.length > 7 %}
+  <div class="row">
+        <div class="col center-aligned"><a class="nn-button" href="/page/1">Load More</a></div>
+    </div>
+  {% endif %}
+</div>
+
+{% include 'footer.html' %}

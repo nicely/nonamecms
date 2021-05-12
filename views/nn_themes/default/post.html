@@ -1,0 +1,113 @@
+{% include 'header.html' %}
+
+{% include 'navigation.html' %}
+
+<style>
+.timeline-Widget{
+  background: #FFFEFC !important;
+}
+</style>
+
+<div class="container">
+  <div class="row">
+  <section style="background: #ffffff; border-right:1px solid #f7f7f7;border-radius: 0 0 5px 0;" class="col left-side">
+      <header style="border-bottom: 1px solid #f9f9f9;padding-bottom: 15px;padding-top:15px;margin-bottom:15px;">
+        <h1>{{post.title}}</h1>
+              <img style="vertical-align: bottom; margin-right:5px; height:30px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{post.author_slug}}.jpg" alt="">
+                <span style="color: #bbbbbb;">By {{post.author_name}} on {{post.readeable_date}}</span>
+      </header>
+      <article>
+        {{post.content | safe}}
+        {% if post.tags.length > 1 %} <p style="font-size:14px;color:#cccccc;"><b style="color:#bbbbbb;">Tags:</b> {{post.tags}}</p> {% endif %}
+      </article>
+      <p>
+          <div id="disqus_thread"></div>                 
+      </p>
+    </section>
+
+    <div class="col right-side">
+      <div class="side_box">
+          <form action="/search">
+            <input class="search" name="query" type="text" placeholder="Search Blog">
+        </form>
+      </div>
+        {% if related.length %}
+        <div class="side_box side_box_list">
+            <h3>You might also like</h3>
+            <ul>
+              {% for related_post in related %}
+              <li><a style="background: #e8f3f7;" href="/{{related_post.slug}}">{{related_post.title}}</a></li>
+              {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+      {% if !post.videos.length %}
+      <div class="side_box side_box_video_list">
+          <h3>Related Videos</h3>
+          <ul>
+            {% for video in post.videos %}
+            <li>
+                <iframe style="border-radius: 7px; border: 3px solid #f1f1f1;" width="100%" height="auto" src="https://www.youtube.com/embed/{{video}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </li>
+            {% endfor %}
+          </ul>
+      </div>
+      {% endif %}
+      <div class="side_box side_box_list">
+          <h3>Popular Articles 🍎</h3>
+          <ul>
+            {% for popular_post in popular %}
+            <li><a href="/{{popular_post.slug}}">{{popular_post.title}}</a></li>
+            {% endfor %}
+          </ul>
+      </div>
+    </div>              
+
+
+  </div>
+</div>
+
+
+{% if post.structuredData %}
+<!--   
+  Check out it!
+  https://developers.google.com/search/docs/data-types/articles#article_types   
+-->
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{nn_config.website_address}}{{post.slug}}"
+    },
+    "headline": "{{post.title|substring(110)}}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "{{nn_config.website_address}}{{client_path}}/img/posts/{{post.featured_image}}.jpg",
+      "height": 1200,
+      "width": 1200
+    },
+    "datePublished": "{{post.structured_created_time}}",
+    "dateModified": "{{post.structured_modified_time}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{post.author_name}}"
+    },
+     "publisher": {
+      "@type": "Organization",
+      "name": "Smart Moderation",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{nn_config.website_address}}{{client_path}}/img/sm_60_600.png",
+        "width": 600,
+        "height": 60
+      }
+    },
+    "description": "{{post.description}}",
+    "articleSection": "{{post.tags[0]}}"
+
+  }
+  </script>
+  {% endif %}
+{% include 'footer.html' %}

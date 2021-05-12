@@ -1,0 +1,24 @@
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>404 : Page requested by the client was not found</title>
+  <meta name="description" content="{{post.description}}">
+  <meta name="keywords" content="{{post.tags}}">
+  <meta name="author" content="coment.io">
+    <!--   CSS's    -->
+    <link href="{{client_path}}/css/semantic/reset.min.css" rel="stylesheet">
+    <link href="{{client_path}}/css/semantic/container.min.css" rel="stylesheet">
+    <link href="{{client_path}}/css/semantic/grid.min.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="{{client_path}}/css/heroes.min.css">
+</head>
+
+<body style="min-height:100%;">
+<div style="min-height:900px;" class="ui grid container">
+    <div style="margin-top:200px;" class="six wide column centered">
+        <h1>404 : Page requested by the client was not found</h1>
+        <p> <a href="/">Go to homepage.</a> </p>
+    </div>
+</div>
+{% include 'footer.html' %}

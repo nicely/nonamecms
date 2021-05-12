@@ -1,0 +1,43 @@
+{% include 'header.html' %}
+<body>
+<div class="ui container">
+<div class="ui grid padded">
+
+<div class="four wide column">
+{% include 'sidebar.html' %}
+</div>
+
+<div class="twelve wide column">
+    <div class="ui buttons fluid">
+        <a href="/nn-admin?type=pages&status=active" class="ui button">Page (active)</a>
+        <a href="/nn-admin?type=pages" class="ui button">Page (Passive)</a>
+        <a href="/nn-admin?type=posts&status=active" class="ui blue button">Posts (active)</a>
+        <a href="/nn-admin?type=posts" class="ui blue button">Posts (Passive)</a>
+      </div>
+<table class="ui celled striped table">
+  <thead>
+    <tr><th colspan="3">
+      Post Lists
+    </th>
+  </tr></thead>
+  <tbody>
+  {% for post in posts %}
+    <tr>
+      <td>
+        {{post.title}} <span style="font-size: 10px;"> <a target="_blank" href="/{{post.slug}}">go</a></span>
+        <br>
+        {% if post.author_name %}<span style="font-size: 12px;">by {{post.author_name}}</span>
+        {% endif %}
+      </td>
+      <td class="right aligned collapsing">
+      <a class="ui tiny button" href="/nn-admin/post/{{post.id}}/edit">Edit</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+
+</div>
+</div>
+</body>

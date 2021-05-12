@@ -1,0 +1,133 @@
+{% include 'header.html' %}
+<body>
+<div class="ui container">
+<div class="ui grid padded">
+<div class="four wide column">
+{% include 'sidebar.html' %}
+</div>
+<div class="twelve wide column">
+<form method="POST" action="/nn-admin/post/new" class="ui form fluid">
+  <div class="field">
+    <label>Post title</label>
+    <input name="post_title" placeholder="Type a title, just think like search engine :)" type="text">
+  </div>
+  <div id="editor" class="field">
+    <label>Content</label>
+    <textarea :value="input" @input="update" name="md_content" placeholder="Your unique content here!"></textarea>
+    <div style="overflow:auto; max-height:400px;" v-html="compiledMarkdown"></div>
+    <textarea style="display:none;" v-html="compiledMarkdown" name="post_content"></textarea>
+  </div>
+
+  <div id="descControl" class="field">
+    <label>Description</label>
+    <textarea v-model="message" placeholder="Maximum 160 char" name="post_description" rows="2"></textarea>
+    <span v-if="message.length > 0" v-bind:style="checkMessageCount" id="maxDesc">{% raw %} {{message.length}} {% endraw %}</span>
+  </div>
+
+   <div class="field">
+    <label>tags</label>
+    <input name="post_tags" placeholder="ex: Mobile, AI, social media" type="text">
+  </div>
+
+
+  <div class="field">
+    <label>videos</label>
+    <input name="post_videos" placeholder="ex: yQuauW7uWcM,l4E8OyQsyn8" type="text">
+  </div>
+
+  <div class="field">
+    <label>featured image</label>
+    <input name="featured_image" placeholder="" type="text">
+  </div>
+
+  <div class="field">
+      <label>Authors</label>
+     <select name="author_name">
+       <option value="Osman Erdi">Erdi</option>
+   </select>
+   </div>
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input name="post_featured" type="checkbox">
+      <label>Featured</label>
+    </div>
+  </div>
+  
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input name="post_active" type="checkbox">
+      <label>Active</label>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input name="post_page" type="checkbox">
+      <label>Page</label>
+    </div>
+  </div>
+
+
+<div class="field">
+   <label>Custom Theme</label>
+   <b>now: </b> {{post.theme}}
+  <select name="theme">
+    <option value="default.html">default.html</option>
+    {% for theme in themes %}
+        <option value="{{theme}}">{{theme}}</option>
+  {% endfor %}
+</select>
+</div>
+
+
+
+  <button class="ui fluid button" type="submit">Submit</button>
+
+</form>
+
+</div>
+
+</div>
+</div>
+
+ 
+  <script type="text/javascript">
+    new Vue({
+      el: '#descControl',
+      data: {
+        message: ''
+      },
+      computed: {
+        checkMessageCount: function () {
+          var obj;
+              if(this.message.length > 160 ){
+                obj =  {color: 'red'};
+              }
+              return obj;
+            }
+          }
+        })
+
+
+new Vue({
+  el: '#editor',
+  data: {
+    input: '# hello'
+  },
+  computed: {
+    compiledMarkdown: function () {
+      return marked(this.input, { sanitize: true })
+    }
+  },
+  methods: {
+    update: _.debounce(function (e) {
+      this.input = e.target.value
+    }, 300)
+  }
+})
+  </script>
+
+</body>
+</html>

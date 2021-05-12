@@ -1,0 +1,72 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+<div class="container">
+  <div class="row middle-nav">
+        <div class="col no-pad">
+                <h2 style="margin-bottom:10px; color:#555555;">Page {{number}}</h2>
+        </div>
+        <div class="col no-pad" style="vertical-align: middle;">
+            <form action="/search">
+                <input class="search" name="query" type="text" placeholder="Search Blog ...">
+            </form>
+        </div>
+  </div>
+
+  {% if posts.length %}
+
+<div class="row">
+    <div class="col col-60">
+          <!--  Rows  -->
+  {% for post in posts %}
+  <div style="margin-bottom:40px;" class="row">
+      <div style="vertical-align: top;" class="col no-pad">
+        <article>
+          {% if post.featured_image %}
+            <p>
+              <a href="/{{post.slug}}">
+                  <img style="width: 100%; border-radius: 5px 5px 0 0;" src="{{client_path}}/img/posts/{{post.featured_image}}.jpg" alt="">
+              </a>
+            </p>
+            {% endif %}
+                <h2 style="margin:0;" >
+                  <a style="text-decoration:none;" href="/{{post.slug}}">{{post.title}}</a>
+                </h2>
+          <p>{{post.content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;;text-decoration:none;" href="/{{post.slug}}"> read more</a></p>
+          <p class="post_info ">
+              <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{post.author_slug}}.jpg" alt="Author image">
+                <a href="#">By {{post.author_name}} on {{post.readeable_date}}</a>
+          </p>
+      </article>
+      </div>
+  </div>
+  {% endfor %}
+<div class="row">
+    {% if number != 1 || posts.length < 10 %}
+        {% if (number-1) === 0 %}
+        <div class="col left-aligned no-pad"><a class="nn-button" href="/blog">Previous</a></div>
+        {% else %}
+        <div class="col left-aligned no-pad"><a class="nn-button" href="/page/{{number - 1}}">Previous</a></div>
+        {% endif %}
+    {% endif %}
+    {% if posts.length == 10 %}
+    <div class="col right-aligned no-pad"><a class="nn-button" href="/page/{{number + 1}}">Next</a></div>
+    {% endif %}
+</div>
+
+    </div>
+    <div style="background: #f5f5f5;" class="col col-40 v-top">
+            <div class="side_box">
+                    <h3>Subscribe 📬 </h3>
+                    <p>Subscribe to mailling list for receiving awesome magical social media & digital marketing secrets to your inbox!</p>
+                    <p id="subscribe_box">          
+                      <input style="box-sizing:border-box; width: 100%;
+                      padding: 7px 13px;
+                      border-radius: 7px 7px 0px 0px;
+                      border: 1px solid #f1f1f1;
+                      font-size: 16px;" placeholder="E-mail address" type="text" id="subscriber_email">
+                      <a style="cursor:pointer;background:#1678C2;font-size: 16px; text-align:center; color: #fbfbfb; display:block; padding: 7px 17px; border-radius: 0 0 7px 7px;" onclick="subscribe()" >Subscribe</a></p>
+                </div>
+    </div>
+</div>
+{% endif %}
+</div>

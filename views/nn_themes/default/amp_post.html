@@ -1,0 +1,159 @@
+<!doctype html>
+<html amp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{post.title}}</title>
+    <link rel="canonical" href="{{nn_config.website_address}}{{post.slug}}" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+    <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <script async custom-element="amp-analytics"
+    src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "{{nn_config.website_address}}{{post.slug}}"
+        },
+        "headline": "{{post.title|substring(110)}}",
+        "image": {
+          "@type": "ImageObject",
+          "url": "{{nn_config.website_address}}{{client_path}}/img/posts/{{post.featured_image}}.jpg",
+          "height": 1200,
+          "width": 1200
+        },
+        "datePublished": "{{post.structured_created_time}}",
+        "dateModified": "{{post.structured_modified_time}}",
+        "author": {
+          "@type": "Person",
+          "name": "{{post.author_name}}"
+        },
+         "publisher": {
+          "@type": "Organization",
+          "name": "Noname",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{nn_config.website_address}}{client_path}}/img/sm_60_600.png",
+            "width": 600,
+            "height": 60
+          }
+        },
+        "description": "{{post.description}}",
+        "articleBody": "{{post.content|striptags}}",
+        "articleSection": "{{post.tags[0]}}"
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <style amp-custom>
+#nav a,a{text-decoration:none}#nav,.side_box{border-bottom:1px solid #f1f1f1}body,html{margin:0;padding:0;left:0;top:0}.center,.container{margin-left:auto;margin-right:auto}*{font-family:Helvetica,sans-serif;color:#333447;line-height:1.5}@media only screen and (max-width:59em){.container{width:100%}.nn-button{display:block;text-align:center;margin-bottom:10px}}@media only screen and (min-width:60em){.container{width:95%;max-width:70rem}.left-side{width:70%}.right-side{width:30%}.col-80{width:80%}.col-70{width:70%}.col-60{width:60%}.col-50{width:50%}.col-40{width:40%}.col-30{width:30%}.col-20{width:20%}.col-10{width:10%}}.row .row{margin:0 -1.5em}.col{padding:0 1.5em}@media (min-width:30em){.no-pad{padding:0}.row{width:100%;display:table;table-layout:fixed}.col{display:table-cell}}.v-top{vertical-align:top}.v-middle{vertical-align:middle}.v-bottom{vertical-align:bottom}#nav a,#nav h1{vertical-align:middle}.right-aligned{text-align:right}.left-aligned{text-align:left}.center-aligned{text-align:center}.radius-30{border-radius:30px}article img{max-width:100%;max-height:250px}article{line-height:1.7;font-size:18px}article p{line-height:1.7;font-size:1.1rem}article p a{color:#009dff}section h1{font-size:1.8rem;margin-bottom:0;padding-bottom:0}::placeholder{color:#ddd;opacity:1}:-ms-input-placeholder{color:#ddd}::-ms-input-placeholder{color:#ddd}#nav{background:rgba(245,245,245,.933);line-height:1.8;top:0;right:0;left:0}#nav h1{font-size:24px;display:inline;margin-left:7px}#nav h1 a{color:#444}.nav-right a{margin-left:20px}.nav-right{padding:15px 0;float:right;margin-top:11px;text-align:right}.nav-left{padding:15px 0;display:inline-block}#getstarted{background:#1678c2;padding:12px 18px 10px;color:#fbfbfb;border-radius:50px;font-weight:400}.cto-button,.nn-button{padding:12px 28px 9px;color:#fbfbfb;border-radius:50px;font-weight:400;box-shadow:2px 2px 5px #999;transition:.5s;margin-bottom:40px}.nn-button{background:#333}.cto-button{background:#18c274;display:block}.cto-button:hover{box-shadow:2px 2px 5px #666;margin-bottom:50px}.blue{background:#1870c2}.green{background:#18c274}.side_box_list ul{padding-left:15px}.side_box_list a{background:#fcf9e8}.side_box_list ul li{list-style:upper-roman}.search{width:100%;box-sizing:border-box;padding:7px 13px;border-radius:3px;border:1px solid #f1f1f1;font-size:18px;margin:10px 0}.tag{font-size:14px;color:#ccc}.logo-text{font-size:24px;font-weight:700;margin-left:7px;color:#444}.main-section{background:#fff;border-left:1px solid #f1f1f1;border-right:1px solid #f1f1f1}.content-header{border-bottom:1px solid #f5f5f5;padding-bottom:25px}.side_box_video_list ul{padding-left:0}.side_box_video_list ul li{list-style:none}
+</style>
+  </head>
+  <body>
+      <amp-analytics type="googleanalytics">
+          <script type="application/json">
+          {
+            "vars": {
+              "account": "UA-67822942-1"
+            },
+            "triggers": {
+              "trackPageview": {
+                "on": "visible",
+                "request": "pageview"
+              },
+              "trackEvent": {
+                "selector": "#event-test",
+                "on": "click",
+                "request": "event",
+                "vars": {
+                  "eventCategory": "ui-components",
+                  "eventAction": "click"
+                }
+              }
+            }
+          }
+          </script>
+          </amp-analytics>
+        
+<div id="nav">
+    <div class="container">
+        <div class="row">
+            <div class="col v-middle">
+                    <div class="nav-left">
+                            <amp-img width="50" height="50" src="{{nn_config.website_address}}/homepage/img/sm-logo.png" alt="Noname logo" />
+                            </div>
+                    <div class="nav-right">
+                            <a id="getstarted" href="/blog">Blog</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+      <div class="container">
+          <div class="row">
+          <section class="col left-side main-section">
+              <header class="content-header">
+                <h1>{{post.title}}</h1>
+                      <amp-img class="v-middle radius-30" width="30" height="30" src="{{client_path}}/img/authors/{{post.author_slug}}.jpg" alt="img"></amp-img>
+                        <a href="#">By {{post.author_name}} on {{post.readeable_date}}</a>
+              </header>
+              
+              <article>
+                {{post.content | safe}}
+                <p>
+                    <amp-social-share type="email"></amp-social-share>
+                    <amp-social-share type="facebook"
+                      data-param-app_id="254325784911610"></amp-social-share>
+                    <amp-social-share type="gplus"></amp-social-share>
+                    <amp-social-share type="linkedin"></amp-social-share>
+                    <amp-social-share type="pinterest"
+                      data-param-media="https://ampbyexample.com/img/amp.jpg"></amp-social-share>
+                    <amp-social-share type="tumblr"></amp-social-share>
+                    <amp-social-share type="twitter"></amp-social-share>
+                    <amp-social-share type="whatsapp"></amp-social-share>
+                </p>
+                {% if post.tags.length > 1 %} <p class="tag">Tags: {{post.tags}}</p> {% endif %}
+              </article>
+              <p>
+                <a class="nn-button center-aligned" href="/{{post.slug}}#disqus_thread">Show Comments</a>
+              </p>
+            </section>
+        
+            <div class="col right-side">
+              <div class="side_box">
+                  <form target="_blank" action="/search">
+                    <input class="search" name="query" type="text" placeholder="Search Blog">
+                </form>
+              </div>
+              {% if post.videos.length %}
+              <div class="side_box side_box_video_list">
+                  <h3>Related Videos</h3>
+                  <ul>
+                    {% for video in post.videos %}
+                    <li>
+                        <amp-youtube
+                        data-videoid="{{video}}"
+                        layout="responsive"
+                        width="480" height="270"></amp-youtube>
+                    </li>
+                    {% endfor %}
+                  </ul>
+              </div>
+              {% endif %}
+              <div class="side_box side_box_list">
+                  <h3>Popular Posts ⚡️</h3>
+                  <ul>
+                    {% for popular_post in popular %}
+                    <li><a href="/{{popular_post.slug}}">{{popular_post.title}}</a></li>
+                    {% endfor %}
+                  </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+  </body>
+</html>

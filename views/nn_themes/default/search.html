@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+{% include 'navigation.html' %}
+<div class="container">
+        <div class="row middle-nav">
+                <div class="col col-60 no-pad v-bottom">
+                        <h2 style="margin-bottom:10px; color:#555555;">Search Results</h2>
+                </div>
+                <div class="col col-40 no-pad" style="vertical-align: middle;">
+                    <form action="/search">
+                        <input class="search" name="query" type="text" placeholder="Search Blog">
+                    </form>
+                </div>
+          </div>
+
+  {% if posts.length %}
+  <!--  First Row  -->
+  {% for post in posts %}
+  <div style="margin-bottom:40px;border-bottom: 1px solid #f1f1f1;" class="row">
+      <div style="vertical-align: top;" class="col">
+        <article>
+                <h2 style="margin:0;" >
+                  <a style="text-decoration:none;" href="/{{post.slug}}">{{post.title}}</a>
+                </h2>
+          <p>{{post.content|striptags|substring(300) }} ... <a class="readmore" style="color:#222222;;text-decoration:none;" href="/{{post.slug}}"> read more</a></p>
+          {% if post.author_name %} 
+          <p class="post_info ">
+              <img style="vertical-align: bottom; margin-right:5px; width:30px;border-radius:50px;" src="{{client_path}}/img/authors/{{post.author_slug}}.jpg" alt="Author image">
+              <a href="#">By {{post.author_name}} on {{post.readeable_date}}</a>
+          </p>
+          {% endif %}
+      </article>
+      </div>
+  </div>
+  {% endfor %}
+  {% else %}
+    <div style="margin-bottom:40px;" class="row">
+        <div style="vertical-align: top;" class="col">
+            <span>Blog post not exist!</span>
+        </div>
+    </div>
+  {% endif %}
+
+  
+
+</div>
+

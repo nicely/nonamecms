@@ -1,0 +1,18 @@
+{% include 'header.html' %}
+
+  <div style="margin-top:30px;" class="ui container">
+    <div class="ui grid padded">
+      <div class="ui stackable fourteen wide computer sixteen wide mobile column centered">
+      <header>  
+        <h1>{{post.title}}</h1> 
+      </header>
+       <article>
+          <p>{{post.content | safe}}</p>
+        {% if post.tags.length > 1 %} <p><b>Tags:</b> {{post.tags}}</p> {% endif %}
+       </article>
+      </div>
+    </div>
+  </div>
+</body>
+
+{% include 'footer.html' %}
